@@ -2,13 +2,12 @@ import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "routes/Auth";
 import Home from "routes/Home";
-import Profile from "routes/Profile";
-import Navigation from "components/Navigation";
+import Logout from "components/Logout";
+const AppRouter = ({isLoggedIn, isAdmin, userObj, refreshUser}) =>  {
 
-const AppRouter = ({isLoggedIn, userObj, refreshUser}) =>  {
      return (
         <Router>
-            {isLoggedIn && <Navigation userObj={userObj} />}
+            {isLoggedIn && <Logout userObj={userObj} refreshUser={refreshUser} />}
             <Switch>
                 {isLoggedIn ?
                 <div
@@ -21,8 +20,7 @@ const AppRouter = ({isLoggedIn, userObj, refreshUser}) =>  {
                   justifyContent: "center",
                 }}
                 >
-                <Route exact path="/"><Home userObj={userObj} /></Route> 
-                <Route exact path="/profile"><Profile userObj={userObj} refreshUser={refreshUser}/></Route> 
+                <Route exact path="/"><Home userObj={userObj} isAdmin={isAdmin} /></Route> 
                 </div>
                 :
                 <Route exact path="/"><Auth/></Route>}

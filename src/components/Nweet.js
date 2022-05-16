@@ -1,11 +1,11 @@
 import { dbService, storageService } from "fbase";
 import { doc, deleteDoc, updateDoc  } from "firebase/firestore";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { deleteObject, ref } from "@firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Nweet = ({nweetObj, isOwner}) => { 
+const Nweet = ({nweetObj, isOwner, isAdmin}) => { 
     const [editing, setEditing] = useState(false); // True And False
     const [newNweet, setNewNweet] = useState(nweetObj.text); // Update Text of Edit Input 
 
@@ -55,9 +55,10 @@ const Nweet = ({nweetObj, isOwner}) => {
                 </input>
                 <input className="formBtn" type="submit" value="수정하기"></input> 
                 <span onClick={toggleEditing} className="formBtn cancelBtn">
-                    취소하기
+                    취소
                 </span>
             </form>
+            : nweetObj.isAdmin ? <h4 className="adminText" key={nweetObj.id}> [관리자] {nweetObj.text} </h4>  
             : <h4 key={nweetObj.id}> {nweetObj.text} </h4>  
             }
             {nweetObj.attachmentURL && <img src={nweetObj.attachmentURL} alt="attachmentURL"/> }

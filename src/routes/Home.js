@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
 
-const Home = ({userObj}) => {
+const Home = ({userObj, isAdmin}) => {
     const [nweets, setNweets] = useState([]);
 
     useEffect(() => { 
@@ -14,21 +14,23 @@ const Home = ({userObj}) => {
                 ...doc.data()
             }))
             
-        const sortedArray = nweetArray.sort((first, second) =>  second.createdAt - first.createdAt  )  
+        const sortedArray = nweetArray.sort((first, second) =>  second.createdAt - first.createdAt)  
         setNweets(sortedArray)
         })
     }, []);
 
+    
 
     return (
         <div className="container">
-            <NweetFactory userObj={userObj}></NweetFactory>
+            <NweetFactory userObj={userObj} isAdmin={isAdmin}></NweetFactory>
             <div style={{ marginTop: 30 }}>
                 {nweets.map(nweet =>
                     <Nweet 
                     key={nweet.id} 
                     nweetObj={nweet}
                     isOwner={nweet.creatorId === userObj.uid} 
+                    isAdmin={isAdmin}
                     />
                 )}
             </div>
