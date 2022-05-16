@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const NweetFactory = ({userObj}) => {
+const NweetFactory = ({userObj, isAdmin}) => {
 
     const [nweet, setNweet] = useState();
     const [attachment, setAttachment] = useState("");
@@ -32,6 +32,7 @@ const NweetFactory = ({userObj}) => {
         }
         const nweetObj = {
             text:nweet,
+            isAdmin:isAdmin,
             createdAt: Date.now(),
             creatorId: userObj.uid,
             attachmentURL,
@@ -61,10 +62,10 @@ const NweetFactory = ({userObj}) => {
     return (
         <form onSubmit={onSubmit} className="factoryForm"> 
             <span style={{ color:"white", fontSize: 20, paddingBottom:10}}>{"안녕하세요?"}</span>
-            <span style={{ color:"white", fontSize: 20, paddingBottom:10}}>{"방문 이력을 남겨주세요! 😍"}</span>
-            <span style={{ color:"white", fontSize: 18, paddingBottom:10}}>{"모든 내용은 익명으로 전달됩니다"}</span>
+            <span style={{ color:"white", fontSize: 20, paddingBottom:10}}>{"방문 이력을 남겨주세요! (❁ᴗ͈ˬᴗ͈)"}</span>
+            <span style={{ color:"white", fontSize: 18, paddingBottom:20}}>{"모든 내용은 익명으로 전달됩니다"}</span>
             <span style={{ color:"darkgray", fontSize: 11, paddingBottom:5}}>*부적절한 내용은 관리자에 의해 삭제 조치될 수 있습니다. </span>
-            <span style={{ color:"darkgray", fontSize: 11, paddingBottom:20}}>*배다롱이 제작에 참여한 HeyNana 어플도 많이 이용 부탁드려요! </span>
+            <span style={{ color:"darkgray", fontSize: 11, paddingBottom:30}}>*배다롱이 제작에 참여한 HeyNana 어플도 많이 이용 부탁드려요! </span>
             <div className="factoryInput__container">
                 <input
                 className="factoryInput__input"
@@ -101,7 +102,7 @@ const NweetFactory = ({userObj}) => {
             }}
             />
             <div className="factoryForm__clear" onClick={onClearAttachment}>
-                <span>Remove</span>
+                <span>첨부파일 삭제</span>
                 <FontAwesomeIcon icon={faTimes} />
             </div>
             </div>

@@ -71,16 +71,6 @@ form {
   background-color: tomato;
 }
 
-/* Profile Page */
-
-.profileForm {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-  padding-bottom: 30px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .logOut {
   margin-top: 15px;
 }
@@ -109,7 +99,7 @@ form {
   height: 40px;
   padding: 0px 20px;
   color: white;
-  border: 1px solid #eaabff;
+  border: 1px solid #FEBD00;
   border-radius: 20px;
   font-weight: 500;
   font-size: 12px;
@@ -145,6 +135,7 @@ form {
 .factoryForm__attachment img {
   height: 80px;
   width: 80px;
+  margin-bottom: 10px;
   border-radius: 40px;
 }
 
@@ -218,6 +209,21 @@ form {
   align-items: center;
 }
 
+.nav {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  padding-top: 100px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.adminText {
+  color:#eaabff;
+  font-weight: 600;
+}
+
 .authBtns {
   display: flex;
   justify-content: space-between;
@@ -257,6 +263,14 @@ form {
   background: #FEBD00;
   color: white;
   margin-top: 10px;
+  cursor: pointer;
+}
+
+.anonymouse{
+  text-align: center;
+  background: rgb(255, 94, 228);
+  color: white;
+  margin: 20px 0;
   cursor: pointer;
 }
 

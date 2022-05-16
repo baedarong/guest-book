@@ -6,15 +6,16 @@ import { onAuthStateChanged } from 'firebase/auth';
 function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
+  const [admin, setAdmin] = useState(false);
+
   useEffect(()=>{
-    // Adds an observer for changes to the user's sign-in state.
-    // wating firebase
     onAuthStateChanged(auth, (user) => {
       if(user) setUserObj(user);
+      if(user?.email === "qock6563@gmail.com") setAdmin(true);
       setInit(true);
     })
   }, []);
-   
+
   const refreshUser = () => {
     setUserObj(authService.currentUser);
   }
@@ -24,6 +25,7 @@ function App() {
     {init ?
     <AppRouter 
     isLoggedIn={Boolean(userObj)} 
+    isAdmin={admin}
     userObj={userObj} 
     refreshUser={refreshUser}/> : <div className="authContainer"> 로딩중.... </div> 
     }
