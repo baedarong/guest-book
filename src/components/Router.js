@@ -5,7 +5,6 @@ import Home from "routes/Home";
 import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 
-{/* rendering 시킬 라우터는 인증상태에 따라 달라지도록 분기처리 */}
 const AppRouter = ({isLoggedIn, userObj, refreshUser}) =>  {
      return (
         <Router>

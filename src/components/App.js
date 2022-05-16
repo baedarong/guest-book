@@ -25,7 +25,7 @@ function App() {
     <AppRouter 
     isLoggedIn={Boolean(userObj)} 
     userObj={userObj} 
-    refreshUser={refreshUser}/> : "Initializing...." 
+    refreshUser={refreshUser}/> : <div class="authContainer"> 로딩중.... </div> 
     }
     </>
   );

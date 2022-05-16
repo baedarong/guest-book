@@ -1,11 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGoogle,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import { faGoogle, faGithub,} from "@fortawesome/free-brands-svg-icons";
+import { getAuth, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import AuthForm from "components/AuthForm";
+import { authService } from "fbase";
 import { faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
@@ -23,6 +21,7 @@ const Auth = () => {
         provider = new GithubAuthProvider();
         provider.addScope('repo');
       }
+      await authService.signInWithPopup(provider);
     }
     
     return (
@@ -34,7 +33,7 @@ const Auth = () => {
         style={{ marginBottom: 25 }}
       />
       <span style={{"paddingBottom": 10}}> 다롱네 방명록 (｡•̀ᴗ-)✧" </span>
-      <span style={{"paddingBottom": 30}}> Instagram @darongBae </span>
+      <span style={{"paddingBottom": 30}}> Instagram @darongbae </span>
         <AuthForm auth={auth}/>
         <div>
          <div className="authBtns">

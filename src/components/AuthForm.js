@@ -16,18 +16,16 @@ const AuthForm = ({auth}) => {
     const onSubmit = async (event) => {
       event.preventDefault();
       try {
-        let data;
         if(newAccount) {
-          data = await createUserWithEmailAndPassword(auth, email, password);
+          await createUserWithEmailAndPassword(auth, email, password);
         } else {
-          data = await signInWithEmailAndPassword(auth, email, password);
+          await signInWithEmailAndPassword(auth, email, password);
         }
       } catch(error) {
         //Firebase: Error (auth/email-already-in-use).
-        if(error.message.includes('email-already-in-use'))
-        setError("해당 계정으로 가입한 이력이 존재합니다! 로그인 해주세요") 
-        else 
-        setError(error.message)
+        if(error.message.includes('email-already-in-use')) setError("해당 계정으로 가입한 이력이 존재합니다! 로그인 해주세요") 
+        else if (error.message.includes('account-exists-with-different-credential')) setError("다른 방식으로 가입된 계정입니다. 해당 방식으로 로그인 해주세요!")
+        else setError(error.message)
       }
     }
 

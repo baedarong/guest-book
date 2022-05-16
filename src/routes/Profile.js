@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { authService, dbService } from "fbase";
-import { collection, getDocs, query, where, orderBy, querySnapshot } from "@firebase/firestore";
+import { collection, getDocs, query, where } from "@firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 
