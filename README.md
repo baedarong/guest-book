@@ -1,3 +1,9 @@
+based on https://nomadcoders.co/nwitter/lobby
+
+and you can go to https://baedarong.github.io/guest-book/#/ to check app!
+
+
+
 INTRODUCTION
 - 0.0 Welcome! (03:22)
 - 0.1 Requirements (01:11)
